@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Affiliate Deal Workbench</title>
+    
+        <!-- PWA Manifest & Mobile App Settings -->
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#111827">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Instant Theme Loader -->
+    <script>
+        (function() {
+            var theme = localStorage.getItem("workbench_theme") || "light";
+            document.documentElement.setAttribute("data-theme", theme);
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/settings.css">
+</head>
+<body>
+
+    <!-- TOP NAVIGATION -->
+   <nav class="top-nav">
+    <div class="nav-logo">⚡ Deal Manager</div>
+    
+    <button 
+        type="button" 
+        id="themeToggleBtn" 
+        class="theme-toggle-btn" 
+        title="Toggle Theme"
+        onclick="toggleTheme()"
+    >
+        🌙
+    </button>
+
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">🏠 Dashboard</a>
+        <a href="deals.html" class="nav-link">💰 Deals</a>
+        <a href="image-studio.html" class="nav-link">🖼️ Image Studio</a>
+        <a href="content.html" class="nav-link">✍️ Content</a>
+        <a href="post-builder.html" class="nav-link">📱 Post Builder</a>
+        <a href="settings.html" class="nav-link">⚙️ Settings</a>
+    </div>
+</nav>
+
+    <!-- HEADER -->
+    <header class="app-header">
+        <h1>⚙️ Workspace Settings</h1>
+        <p>Manage data backups, storage health, and application preferences</p>
+    </header>
+
+    <main>
+        <!-- STORAGE & METRICS -->
+        <section class="app-section">
+            <h2>📊 Database & Storage Health</h2>
+            <p class="section-description">Overview of stored records and local memory consumption.</p>
+
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <span class="metric-label">Total Deals Saved</span>
+                    <strong id="metricTotalDeals" class="metric-value">0</strong>
+                </div>
+                <div class="metric-card">
+                    <span class="metric-label">Storage Consumed</span>
+                    <strong id="metricStorageUsed" class="metric-value">0.00 KB</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- BACKUP & RESTORE -->
+        <section class="app-section">
+            <h2>💾 Backup & Restore Data</h2>
+            <p class="section-description">Export your deals to a portable JSON file or restore from a previous backup.</p>
+
+            <div class="settings-action-row">
+                <div>
+                    <h3>Export Deals</h3>
+                    <p class="setting-hint">Download your entire deal database as a JSON backup file.</p>
+                </div>
+                <button type="button" id="btnExportDeals" class="settings-btn btn-export">
+                    📤 Export JSON Backup
+                </button>
+            </div>
+
+            <hr class="setting-divider">
+
+            <div class="settings-action-row">
+                <div>
+                    <h3>Import Deals</h3>
+                    <p class="setting-hint">Select a valid `.json` backup file to restore your deals.</p>
+                </div>
+                <div class="import-controls">
+                    <input type="file" id="importFileInput" accept="application/json" style="display: none;">
+                    <button type="button" id="btnTriggerImport" class="settings-btn btn-import">
+                        📥 Choose Backup File
+                    </button>
+                </div>
+            </div>
+            <p id="importStatus" class="status-msg"></p>
+        </section>
+
+        <!-- DANGER ZONE -->
+        <section class="app-section danger-section">
+            <h2>⚠️ Database Management</h2>
+            <p class="section-description">Irreversible operations on your local database.</p>
+
+            <div class="settings-action-row">
+                <div>
+                    <h3 style="color: #dc2626;">Clear All Deals</h3>
+                    <p class="setting-hint">Permanently removes all saved deals from your browser memory.</p>
+                </div>
+                <button type="button" id="btnClearAllData" class="settings-btn btn-danger">
+                    🗑️ Reset All Deals
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/settings.js"></script>
+</body>
+</html>

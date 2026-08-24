@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Studio - Affiliate Deal Workbench</title>
+    
+        <!-- PWA Manifest & Mobile App Settings -->
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#111827">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+       <!-- Instant Theme Loader (Prevents White Flash) -->
+   <script>
+       (function() {
+           var theme = localStorage.getItem("workbench_theme") || "light";
+           document.documentElement.setAttribute("data-theme", theme);
+       })();
+   </script>
+   
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/content.css">
+</head>
+<body>
+
+    <!-- TOP NAVIGATION -->
+  <nav class="top-nav">
+    <div class="nav-logo">⚡ Deal Manager</div>
+    
+    <button 
+        type="button" 
+        id="themeToggleBtn" 
+        class="theme-toggle-btn" 
+        title="Toggle Theme"
+        onclick="toggleTheme()"
+    >
+        🌙
+    </button>
+
+    <div class="nav-links">
+        <a href="index.html" class="nav-link">🏠 Dashboard</a>
+        <a href="deals.html" class="nav-link">💰 Deals</a>
+        <a href="image-studio.html" class="nav-link">🖼️ Image Studio</a>
+        <a href="content.html" class="nav-link">✍️ Content</a>
+        <a href="post-builder.html" class="nav-link">📱 Post Builder</a>
+        <a href="settings.html" class="nav-link">⚙️ Settings</a>
+    </div>
+</nav>
+
+    <!-- HEADER -->
+    <header class="app-header">
+        <h1>✍️ Content Studio</h1>
+        <p>Generate high-converting copy tailored for top social media channels</p>
+    </header>
+
+    <main>
+        <!-- INPUT & CONFIGURATION SECTION -->
+        <section class="app-section">
+            <h2>📥 Import Deal Data</h2>
+            <p class="section-description">Quickly fetch an existing deal or enter details manually.</p>
+
+            <label for="dealSelectDropdown">Select Saved Deal</label>
+            <div class="fetch-row" style="display: flex; gap: 8px; margin-bottom: 15px;">
+                <select id="dealSelectDropdown" style="flex: 1;">
+                    <option value="">-- Choose from saved deals --</option>
+                </select>
+                <button type="button" id="btnFetchDeal" style="white-space: nowrap;">⚡ Auto Fill</button>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 20px 0;">
+
+            <h2>📝 Deal Information</h2>
+
+            <label for="contentProductName">Product Name *</label>
+            <input type="text" id="contentProductName" placeholder="Example: Noise ColorFit Pulse Smartwatch">
+
+            <label for="contentStore">Store Name *</label>
+            <input type="text" id="contentStore" placeholder="Example: Amazon / Flipkart">
+
+            <label for="contentPrice">Deal Price (₹) *</label>
+            <input type="number" id="contentPrice" placeholder="1499">
+
+            <label for="contentOriginalPrice">Original Price (₹) *</label>
+            <input type="number" id="contentOriginalPrice" placeholder="4999">
+
+            <label for="contentCoupon">Coupon / Promo Code</label>
+            <input type="text" id="contentCoupon" placeholder="Optional: FESTIVE100">
+
+            <label for="contentUrl">Affiliate Link / Buy URL</label>
+            <input type="url" id="contentUrl" placeholder="https://amzn.to/example">
+
+            <h2 style="margin-top: 25px;">🎨 Social Media & Template Selection</h2>
+
+            <label for="platformSelect">Target Platform</label>
+            <select id="platformSelect">
+                <option value="instagram">📸 Instagram (Captions & Bio Link)</option>
+                <option value="facebook">📘 Facebook (Community & Pages)</option>
+                <option value="telegram">✈️ Telegram (Rich Markdown & Fast Deals)</option>
+                <option value="whatsapp">💬 WhatsApp (Deal Broadcasts & Groups)</option>
+                <option value="twitter">🐦 Twitter / X (Punchy & Trending)</option>
+                <option value="reddit">🤖 Reddit (Markdown Tables & Subreddit Posts)</option>
+            </select>
+
+            <label for="templateSelect">Select Template Style (10 Available)</label>
+            <select id="templateSelect"></select>
+
+            <button type="button" id="generateContent" class="primary-wide-button" style="width: 100%; margin-top: 20px; padding: 14px; font-size: 16px;">
+                ✨ Generate Social Copy
+            </button>
+        </section>
+
+        <!-- OUTPUT SECTION -->
+        <section class="app-section">
+            <div class="section-heading-row" style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>📄 Generated Copy</h2>
+                <button type="button" id="copyContent" style="background: #111827;">📋 Copy to Clipboard</button>
+            </div>
+
+            <textarea
+                id="generatedContent"
+                class="content-output"
+                style="width: 100%; min-height: 220px; margin-top: 10px; font-family: monospace; white-space: pre-wrap;"
+                placeholder="Your tailored promotional text will appear here..."
+            ></textarea>
+        </section>
+    </main>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/content.js"></script>
+</body>
+</html>
