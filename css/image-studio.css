@@ -1,0 +1,273 @@
+/* =========================================
+   UPLOAD AREA
+========================================= */
+
+.upload-section {
+    margin-bottom: 20px;
+}
+
+#imageInput {
+    width: 100%;
+    padding: 14px;
+    background: #f9fafb;
+    border: 2px dashed #9ca3af;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.image-upload-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 8px;
+}
+
+#imageCount {
+    color: #111827;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#imageTimer {
+    color: #6b7280;
+    font-size: 13px;
+}
+
+.clear-images-button {
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px;
+    background: #dc2626;
+}
+
+/* =========================================
+   CROP CONTROLS & RATIOS
+========================================= */
+
+.crop-controls {
+    margin-top: 20px;
+}
+
+.crop-controls h3 {
+    margin: 15px 0 8px;
+    font-size: 15px;
+}
+
+.crop-modes {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
+}
+
+.crop-mode {
+    padding: 10px 4px;
+    background: #e5e7eb;
+    color: #111827;
+    font-size: 13px;
+}
+
+.crop-mode.active {
+    background: #2563eb;
+    color: white;
+}
+
+.studio-actions {
+    margin-top: 12px;
+}
+
+#applyToAll {
+    width: 100%;
+    padding: 12px;
+    background: #059669;
+}
+
+/* =========================================
+   CROP WORKSPACE
+========================================= */
+
+.crop-workspace {
+    margin-top: 25px;
+}
+
+#cropArea {
+    position: relative;
+    width: 100%;
+    min-height: 380px;
+    max-height: 70vh;
+    overflow: hidden;
+    background: #111827;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    touch-action: none;
+    user-select: none;
+}
+
+#cropImage {
+    display: block;
+    max-width: 100%;
+    max-height: 70vh;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    user-select: none;
+    pointer-events: none;
+}
+
+.empty-crop-message {
+    color: #9ca3af;
+    font-size: 15px;
+}
+
+/* =========================================
+   CROP BOX & HANDLES
+========================================= */
+
+.crop-box {
+    position: absolute;
+    border: 2px solid #00e5ff;
+    background: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 0 9999px rgba(0, 0, 0, 0.6);
+    cursor: move;
+    touch-action: none;
+    z-index: 10;
+}
+
+.crop-grid {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+        linear-gradient(to right, rgba(255,255,255,0.7) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.7) 1px, transparent 1px);
+    background-size: 33.333% 100%, 100% 33.333%;
+}
+
+.resize-handle {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: white;
+    border: 3px solid #2563eb;
+    border-radius: 50%;
+    z-index: 20;
+    touch-action: none;
+}
+
+.handle-nw { left: -10px; top: -10px; cursor: nwse-resize; }
+.handle-ne { right: -10px; top: -10px; cursor: nesw-resize; }
+.handle-sw { left: -10px; bottom: -10px; cursor: nesw-resize; }
+.handle-se { right: -10px; bottom: -10px; cursor: nwse-resize; }
+.handle-n  { left: 50%; top: -10px; transform: translateX(-50%); cursor: ns-resize; }
+.handle-s  { left: 50%; bottom: -10px; transform: translateX(-50%); cursor: ns-resize; }
+.handle-w  { left: -10px; top: 50%; transform: translateY(-50%); cursor: ew-resize; }
+.handle-e  { right: -10px; top: 50%; transform: translateY(-50%); cursor: ew-resize; }
+
+.crop-help {
+    text-align: center;
+    color: #6b7280;
+    font-size: 13px;
+    margin-top: 8px;
+}
+
+/* =========================================
+   RESULTS & IMAGE GRID
+========================================= */
+
+.image-results {
+    margin-top: 25px;
+}
+
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+}
+
+.download-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+#downloadIndividual { background: #111827; }
+#downloadZip { background: #7c3aed; }
+
+.image-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.image-item {
+    background: white;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.image-item.active {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+.image-preview {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+    cursor: pointer;
+}
+
+.image-number {
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    background: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Delete Button on each thumbnail */
+.image-delete-btn {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    background: rgba(220, 38, 38, 0.85);
+    color: white;
+    border: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    cursor: pointer;
+    z-index: 3;
+    transition: background 0.15s, transform 0.1s;
+}
+
+.image-delete-btn:hover {
+    background: #dc2626;
+    transform: scale(1.1);
+}
+
+.image-download {
+    width: calc(100% - 12px);
+    margin: 6px;
+    padding: 8px;
+    font-size: 12px;
+    background: #2563eb;
+}

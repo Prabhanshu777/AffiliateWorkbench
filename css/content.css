@@ -1,0 +1,43 @@
+/* =========================================
+   CONTENT STUDIO STYLING (THEME-AWARE)
+========================================= */
+
+.fetch-row button {
+    background: #059669;
+    padding: 10px 16px;
+    font-size: 14px;
+    color: #ffffff;
+}
+
+#generateContent {
+    background: var(--primary-color);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* Theme-adaptive textarea output */
+.content-output {
+    width: 100%;
+    min-height: 220px;
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border-input);
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 14px;
+    line-height: 1.6;
+    font-family: monospace;
+    white-space: pre-wrap;
+    resize: vertical;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.content-output:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+}
+
+.content-output::placeholder {
+    color: var(--text-muted);
+}

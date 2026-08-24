@@ -1,0 +1,166 @@
+/* =========================================
+   DEAL FORM & SEARCH CONTROLS
+========================================= */
+
+.deal-form {
+    padding-bottom: 15px;
+}
+
+#saveDeal {
+    width: 100%;
+    margin-top: 18px;
+    padding: 13px;
+    font-size: 15px;
+    background: var(--primary-color);
+    color: #ffffff;
+}
+
+.deal-list-section {
+    margin-top: 10px;
+}
+
+#searchDeals {
+    margin-bottom: 15px;
+    background-color: var(--bg-input);
+    color: var(--text-primary);
+    border: 1px solid var(--border-input);
+}
+
+/* =========================================
+   DEAL CARDS (THEME ADAPTIVE)
+========================================= */
+
+.deal-card {
+    background-color: var(--bg-card-alt) !important;
+    border: 1px solid var(--border-color) !important;
+    padding: 16px;
+    margin-top: 14px;
+    border-radius: 10px;
+    color: var(--text-primary) !important;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.deal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+}
+
+.deal-id {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 600;
+}
+
+.discount-badge {
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+    padding: 4px 8px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.deal-card h3 {
+    margin: 0 0 8px;
+    font-size: 17px;
+    color: var(--text-primary) !important;
+}
+
+.deal-card p {
+    margin: 4px 0;
+    font-size: 14px;
+    color: var(--text-secondary) !important;
+}
+
+.deal-card p strong {
+    color: var(--text-primary) !important;
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: var(--text-muted) !important;
+    margin-left: 4px;
+}
+
+/* =========================================
+   DEAL ACTION BUTTONS
+========================================= */
+
+.deal-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border-color);
+}
+
+.deal-actions button,
+.open-button {
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.open-button {
+    background: #111827;
+    color: #ffffff;
+}
+
+.edit-button {
+    background: #d97706;
+    color: #ffffff;
+}
+
+.delete-button {
+    background: #dc2626;
+    color: #ffffff;
+}
+
+.no-deals {
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 30px;
+    font-size: 15px;
+}
+
+/* =========================================
+   EXPLICIT DARK MODE OVERRIDES
+========================================= */
+
+[data-theme="dark"] .deal-card {
+    background-color: #172033 !important;
+    border-color: #334155 !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .deal-card h3 {
+    color: #f8fafc !important;
+}
+
+[data-theme="dark"] .deal-card p {
+    color: #94a3b8 !important;
+}
+
+[data-theme="dark"] .deal-card p strong {
+    color: #e2e8f0 !important;
+}
+
+[data-theme="dark"] .open-button {
+    background: #334155;
+    color: #f8fafc;
+}
+
+@media (max-width: 600px) {
+    .deal-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+}
