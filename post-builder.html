@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Builder - Affiliate Deal Workbench</title>
+    
+        <!-- PWA Manifest & Mobile App Settings -->
+    <link rel="manifest" href="../manifest.json">
+    <meta name="theme-color" content="#111827">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Instant Theme Loader -->
+    <script>
+        (function() {
+            var theme = localStorage.getItem("workbench_theme") || "light";
+            document.documentElement.setAttribute("data-theme", theme);
+        })();
+    </script>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/post-builder.css">
+</head>
+<body>
+
+    <!-- TOP NAVIGATION -->
+    <nav class="top-nav">
+        <div class="nav-logo">⚡ Deal Manager</div>
+        
+        <button 
+            type="button" 
+            id="themeToggleBtn" 
+            class="theme-toggle-btn" 
+            title="Toggle Theme"
+            onclick="toggleTheme()"
+        >
+            🌙
+        </button>
+
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">🏠 Dashboard</a>
+            <a href="deals.html" class="nav-link">💰 Deals</a>
+            <a href="image-studio.html" class="nav-link">🖼️ Image Studio</a>
+            <a href="content.html" class="nav-link">✍️ Content</a>
+            <a href="post-builder.html" class="nav-link active">📱 Post Builder</a>
+            <a href="settings.html" class="nav-link">⚙️ Settings</a>
+        </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header class="app-header">
+        <h1>📱 Social Post Builder</h1>
+        <p>Combine deal copy, images, and discounts into ready-to-publish posts</p>
+    </header>
+
+    <main>
+        <!-- CONTROLS & DEAL SELECTION -->
+        <section class="app-section">
+            <h2>⚙️ Post Configuration</h2>
+            <p class="section-description">Select a saved deal and an image to build your social media post.</p>
+
+            <label for="postDealSelector">1. Select Saved Deal</label>
+            <div class="builder-row">
+                <select id="postDealSelector">
+                    <option value="">-- Choose from saved deals --</option>
+                </select>
+                <button type="button" id="btnRefreshDeals" class="secondary-btn">🔄 Refresh</button>
+            </div>
+
+            <label for="postImageInput">2. Attach Product Image</label>
+            <input type="file" id="postImageInput" accept="image/*">
+
+            <div class="builder-grid-2">
+                <div>
+                    <label for="postPlatformSelect">3. Target Platform</label>
+                    <select id="postPlatformSelect">
+                        <option value="telegram">✈️ Telegram</option>
+                        <option value="instagram">📸 Instagram</option>
+                        <option value="whatsapp">💬 WhatsApp</option>
+                        <option value="facebook">📘 Facebook</option>
+                        <option value="twitter">🐦 Twitter / X</option>
+                        <option value="reddit">🤖 Reddit</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="postTemplateSelect">4. Caption Style</label>
+                    <select id="postTemplateSelect"></select>
+                </div>
+            </div>
+
+            <button type="button" id="btnBuildPost" class="primary-wide-button" style="width: 100%; margin-top: 18px; padding: 13px;">
+                🚀 Build Live Preview
+            </button>
+        </section>
+
+        <!-- LIVE PREVIEW & ACTIONS -->
+        <section class="app-section">
+            <h2>📱 Live Preview Card & Actions</h2>
+            <p class="section-description">Preview your post card and share directly to any installed app.</p>
+
+            <div class="preview-container">
+                <div id="mockupCard" class="mockup-card">
+                    <div class="mockup-header">
+                        <div class="mockup-user">
+                            <div class="mockup-avatar">⚡</div>
+                            <div>
+                                <strong id="mockupStoreTag">Store Deals</strong>
+                                <span id="mockupPlatformBadge" class="platform-pill">Telegram</span>
+                            </div>
+                        </div>
+                        <span id="mockupDiscountBadge" class="discount-pill">0% OFF</span>
+                    </div>
+
+                    <div class="mockup-image-box" id="mockupImageBox">
+                        <img id="mockupImage" src="" alt="Deal Preview" style="display: none;">
+                        <div id="mockupImagePlaceholder" class="placeholder-text">
+                            🖼️ No Image Selected<br>
+                            <small>(Upload image above)</small>
+                        </div>
+                    </div>
+
+                    <div class="mockup-price-bar">
+                        <div>
+                            <span class="deal-price" id="mockupDealPrice">₹0</span>
+                            <span class="orig-price" id="mockupOrigPrice">₹0</span>
+                        </div>
+                        <div id="mockupCouponBox" class="coupon-box" style="display: none;">
+                            🎟️ <code id="mockupCouponCode">CODE</code>
+                        </div>
+                    </div>
+
+                    <div class="mockup-caption-box">
+                        <label for="postCaptionOutput"><strong>Caption & Copy:</strong></label>
+                        <textarea id="postCaptionOutput" rows="7" placeholder="Click 'Build Live Preview' to generate copy..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <!-- STREAMLINED ACTION BUTTON GRID -->
+            <div class="action-button-grid">
+                <button type="button" id="btnNativeShare" class="action-btn btn-share-native">
+                    📲 Share
+                </button>
+                <button type="button" id="btnCopyCaption" class="action-btn btn-copy">
+                    📋 Copy Caption
+                </button>
+                <button type="button" id="btnOpenStore" class="action-btn btn-link">
+                    🔗 Open Link
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/post-builder.js"></script>
+</body>
+</html>
