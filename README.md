@@ -1,2 +1,0 @@
-# AffiliateWorkbench
-Create README.md
